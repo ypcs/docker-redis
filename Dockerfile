@@ -20,3 +20,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 USER redis
 CMD ["redis-server", "/etc/redis/redis.conf"]
+RUN echo "Source: https://github.com/ypcs/docker-redis\nBuild date: $(date +%Y-%m-%d\ %H:%M:%S)" >/README
