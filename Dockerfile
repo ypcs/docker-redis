@@ -16,6 +16,6 @@ RUN \
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+RUN echo "Source: https://github.com/ypcs/docker-redis\nBuild date: $(date --iso-8601=ns)" >/README
 USER redis
 CMD ["redis-server", "/etc/redis/redis.conf"]
-RUN echo "Source: https://github.com/ypcs/docker-redis\nBuild date: $(date --iso-8601=ns)" >/README
