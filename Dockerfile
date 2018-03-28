@@ -6,8 +6,6 @@ RUN \
         redis-server && \
     /usr/local/sbin/docker-cleanup
 
-EXPOSE 6379
-
 COPY entrypoint.sh /entrypoint.sh
 
 RUN \
