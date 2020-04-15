@@ -17,5 +17,6 @@ RUN mkdir -p /var/run/redis && \
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+EXPOSE 6379
 USER redis
 CMD ["redis-server", "/etc/redis/redis.conf"]
