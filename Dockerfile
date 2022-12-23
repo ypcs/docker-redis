@@ -1,5 +1,7 @@
 FROM ypcs/debian:bookworm
 
+ARG APT_PROXY
+
 RUN /usr/lib/docker-helpers/apt-setup && \
     /usr/lib/docker-helpers/apt-upgrade && \
     apt-get --assume-yes install \
