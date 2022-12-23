@@ -13,12 +13,16 @@ COPY entrypoint.sh /entrypoint.sh
 
 RUN mkdir -p /var/run/redis && \
     chown redis:redis /var/run/redis && \
-    sed -i "s/^daemonize yes/daemonize no/g" /etc/redis/redis.conf && \
-    sed -i "s/^logfile .*/logfile \/dev\/stdout/g" /etc/redis/redis.conf && \
-    sed -i "s/^bind .*/bind 0.0.0.0/g" /etc/redis/redis.conf
+    echo 'include /etc/redis/local.conf' >> /etc/redis/redis.conf && \
+    sed -i "s/^daemonize /#daemonize /g" /etc/redis/redis.conf && \
+    sed -i "s/^logfile /#logfile \/dev\/stdout/g" /etc/redis/redis.conf && \
+    sed -i "s/^bind /#bind /g" /etc/redis/redis.conf
+
 
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 6379
 USER redis
 CMD ["redis-server", "/etc/redis/redis.conf"]
+
+COPY local.conf /etc/redis/local.conf
